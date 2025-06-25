@@ -1,0 +1,37 @@
+Métodos y ejemplos de uso en Insomnia
+GET
+URL: http://localhost:3000/posts
+Acción: Obtener todos los posts.
+
+POST
+URL: http://localhost:3000/posts
+Acción: Crear un nuevo post.
+Body (JSON):
+{
+  "title": "Título de ejemplo",
+  "body": "Contenido del post",
+  "userId": 1
+}
+
+PUT
+URL: http://localhost:3000/posts/3
+Body (JSON):
+{
+  "title": "Nuevo título",
+  "body": "Nuevo contenido",
+  "userId": 1
+}
+
+PATCH
+URL: http://localhost:3000/posts/3
+
+DELETE
+URL: http://localhost:3000/posts/2
+
+OPTIONS
+URL: http://localhost:3000/posts
+Acción: Ver los métodos permitidos.
+
+HEAD
+URL: http://localhost:3000/posts
+Acción: Ver solo los encabezados de la respuesta.

@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Prueba HEAD y OPTIONS</title>
+</head>
+<body>
+  <h1>Prueba de HEAD y OPTIONS con fetch()</h1>
+
+  <button onclick="testOptions()">Probar OPTIONS</button>
+  <button onclick="testHead()">Probar HEAD</button>
+
+  <h2>Resultado:</h2>
+  <pre id="output"></pre>
+
+  <script>
+    const output = document.getElementById('output');
+
+    async function testOptions() {
+      try {
+        const res = await fetch('http://localhost:3000/posts', {
+          method: 'OPTIONS'
+        });
+
+        const headers = [...res.headers.entries()];
+        const body = await res.text();
+
+        output.textContent = "🟦 OPTIONS HEADERS:\n" + JSON.stringify(headers, null, 2) +
+          "\n\n🟨 BODY:\n" + body;
+      } catch (err) {
+        output.textContent = "❌ Error en OPTIONS: " + err;
+      }
+    }
+
+    async function testHead() {
+      try {
+        const res = await fetch('http://localhost:3000/posts', {
+          method: 'HEAD'
+        });
+
+        const headers = [...res.headers.entries()];
+        output.textContent = "🟪 HEAD HEADERS:\n" + JSON.stringify(headers, null, 2) +
+          "\n\n🟨 BODY:\n(Ninguno: HEAD no devuelve cuerpo)";
+      } catch (err) {
+        output.textContent = "❌ Error en HEAD: " + err;
+      }
+    }
+  </script>
+</body>
+</html>
