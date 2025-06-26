@@ -2,6 +2,10 @@ Métodos y ejemplos de uso en Insomnia
 GET
 URL: http://localhost:3000/posts
 Acción: Obtener todos los posts.
+script
+insomnia.test("Código 200 OK", () => {
+  insomnia.expect(insomnia.response.status).to.equal('OK'); // Compara con texto
+});
 
 POST
 URL: http://localhost:3000/posts
@@ -12,9 +16,14 @@ Body (JSON):
   "body": "Contenido del post",
   "userId": 1
 }
+script
+
+insomnia.test("Código 201 Created", () => {
+  insomnia.expect(insomnia.response.status).to.equal('Created');
+});
 
 PUT
-URL: http://localhost:3000/posts/3
+URL: http://localhost:3000/posts/2
 Body (JSON):
 {
   "title": "Nuevo título",
@@ -22,16 +31,36 @@ Body (JSON):
   "userId": 1
 }
 
+script
+insomnia.test("Código 200 OK", () => {
+  insomnia.expect(insomnia.response.status).to.equal('OK'); // Compara con texto
+});
+
 PATCH
 URL: http://localhost:3000/posts/3
+ script
+insomnia.test("Código 200 OK", () => {
+  insomnia.expect(insomnia.response.status).to.equal('OK'); // Compara con texto
+});
 
 DELETE
 URL: http://localhost:3000/posts/2
-
+script
+insomnia.test("Código 200 OK", () => {
+  insomnia.expect(insomnia.response.status).to.equal('OK'); // Compara con texto
+});
 OPTIONS
 URL: http://localhost:3000/posts
 Acción: Ver los métodos permitidos.
+script
+insomnia.test("Código 200 No Content", () => {
+  insomnia.expect(insomnia.response.status).to.equal('No Content'); // Compara con texto
+});
 
 HEAD
 URL: http://localhost:3000/posts
 Acción: Ver solo los encabezados de la respuesta.
+script
+insomnia.test("Código 200 OK", () => {
+  insomnia.expect(insomnia.response.status).to.equal('OK'); // Compara con texto
+});
